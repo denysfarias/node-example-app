@@ -1,0 +1,17 @@
+version: '3'
+services:
+  my-node-app:
+    build: .
+    ports:
+      - "3030:3030"
+    depends_on:
+      - mongodb
+    environment:
+      - PORT=3030
+      - MONGODB_URI=mongodb://mongodb:27017/my-node-app-db
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    logging:
+      driver: none
